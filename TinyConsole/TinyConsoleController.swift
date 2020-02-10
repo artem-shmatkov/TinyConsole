@@ -20,7 +20,7 @@ open class TinyConsoleController: UIViewController {
         case expanded
     }
     
-    var rootViewController: UIViewController {
+    public var rootViewController: UIViewController {
         didSet {
             setupViewControllers()
             setupConstraints()
@@ -64,7 +64,7 @@ open class TinyConsoleController: UIViewController {
 
     // MARK: - Initializer
 
-    init() {
+    public init() {
         rootViewController = UIViewController()
         super.init(nibName: nil, bundle: nil)
     }
@@ -102,13 +102,13 @@ open class TinyConsoleController: UIViewController {
     private func setupViewControllers() {
         removeAllChildren()
         
-        addChild(consoleViewController)
+        addChildViewController(consoleViewController)
         view.addSubview(consoleViewController.view)
-        consoleViewController.didMove(toParent: self)
+        consoleViewController.didMove(toParentViewController: self)
 
-        addChild(rootViewController)
+        addChildViewController(rootViewController)
         view.addSubview(rootViewController.view)
-        rootViewController.didMove(toParent: self)
+        rootViewController.didMove(toParentViewController: self)
     }
 
     private func setupConstraints() {
